@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DbGears xmlns="http://chameleon.ibs-qa.ru/schema/db">
+    <Connection name="H2" driver="org.h2.Driver" url="jdbc:h2:tcp://localhost:9092/mem:testdb;DB_CLOSE_DELAY=-1;user=#{user};password=#{pass}" autoCommit="true">
+        <Params>
+            <FieldString name="Пользователь" locator="user"/>
+            <FieldString name="Пароль" locator="pass"/>
+        </Params>
+    </Connection>
+    <Query name="Перечень продуктов" statement="SELECT * FROM FOOD">
+        <Result>
+            <FieldInteger name="Идентификатор" locator="FOOD_ID"/>
+            <FieldString name="Имя" locator="FOOD_NAME"/>
+            <FieldString name="Тип" locator="FOOD_TYPE"/>
+            <FieldString name="Экзотический" locator="FOOD_EXOTIC"/>
+        </Result>
+    </Query>
+    <Query name="Добавление Товара"
+           statement="INSERT INTO FOOD(FOOD_NAME, FOOD_TYPE, FOOD_EXOTIC) values(:name, :type, :exotic)">
+        <Params>
+            <FieldString name="Наименование" locator="name"/>
+            <FieldString name="Тип" locator="type"/>
+            <FieldBoolean name="Экзотичность" locator="exotic"/>
+        </Params>
+    </Query>
+    <Query name="Получение данных о товаре"
+           statement="SELECT * FROM FOOD WHERE FOOD_NAME =:name AND FOOD_TYPE =:type AND FOOD_EXOTIC =:exotic">
+        <Params>
+            <FieldString name="Наименование" locator="name"/>
+            <FieldString name="Тип" locator="type"/>
+            <FieldBoolean name="Экзотичность" locator="exotic"/>
+        </Params>
+        <Result>
+            <FieldInteger name="Идентификатор" locator="FOOD_NAME"/>
+            <FieldString name="Наименование" locator="FOOD_NAME"/>
+            <FieldString name="Тип" locator="FOOD_TYPE"/>
+            <FieldBoolean name="Экзотичность" locator="FOOD_EXOTIC"/>
+        </Result>
+    </Query>
+    <Query name="Удаление товара"
+           statement="DELETE FROM Food WHERE FOOD_NAME =:name AND FOOD_TYPE =:type AND FOOD_EXOTIC =:exotic">
+        <Params>
+            <FieldString name="Наименование" locator="name"/>
+            <FieldString name="Тип" locator="type"/>
+            <FieldBoolean name="Экзотичность" locator="exotic"/>
+        </Params>
+    </Query>
+</DbGears>

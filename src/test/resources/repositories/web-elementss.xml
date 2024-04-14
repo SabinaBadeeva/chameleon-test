@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pages xmlns="http://chameleon.ibs-qa.ru/schema/web-elements">
+    <Page name="Главная страница">
+        <ComboBox name="Выпадающий список -> Песочница" locator="//a[@id='navbarDropdown']"/>
+        <Link name="Элемент выпадающего списка -> Товары" locator="//a[@href='/food']"/>
+    </Page>
+    <Page name="Список товаров" locator="//h5[contains(text(),'Список товаров')]">
+        <Button name="Кнопка Добавить" locator="//button[contains(text(),'Добавить')]"/>
+        <Collection name="Таблица товаров" locator="//table[@class='table']//tbody//tr">
+            <StaticText name="Наименование" locator="./td[1]"/>
+            <StaticText name="Тип" locator="./td[2]"/>
+            <StaticText name="Экзотический" locator="./td[3]"/>
+        </Collection>
+    </Page>
+    <Page name="Окно Добавление товаров" locator="//div[@class='modal-content']">
+        <StaticText name="Заголовок окна" locator="//h5[@class='modal-title']"/>
+        <StaticText name="Заголовок окна Наименование" locator="//label[@for='name']"/>
+        <StaticText name="Заголовок окна Тип" locator="//label[@for='type']"/>
+        <StaticText name="Заголовок окна Экзотический" locator="//label[@for='exotic']"/>
+        <Button name="Кнопка Сохранить" locator="//button[@id='save']"/>
+        <TextInput name="Поле Наименование" locator="//input[@id='name']"/>
+        <ComboBox name="Поле Тип" locator="//select[@name='type']"/>
+        <CheckBox name="Чекбокс Экзотический" locator="//input[@type='checkbox']"/>
+    </Page>
+</Pages>
